@@ -7,6 +7,9 @@
 	<class>com.ssa.Logradouro</class>
 	<class>com.ssa.TipoUsuario</class>
 	<class>com.ssa.Area</class>
+	<class>com.ssa.Quarteirao</class>
+	<class>com.ssa.LiraRato</class>
+	<class>com.ssa.DiarioBoletim</class>
 	
 	
 		<properties>
