@@ -16,7 +16,7 @@ public class Teste {
 		usuario.setSenha("1234");
 		usuario.setMatricula(13410);
 		usuario.setCpf(12343);
-		respositorioUsuario.salvarUsuario(usuario);
+		respositorioUsuario.removerUsuario(usuario);
 		
 	}
 
