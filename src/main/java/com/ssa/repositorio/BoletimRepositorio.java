@@ -8,47 +8,47 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 
-import com.ssa.Usuario;
+import com.ssa.DiarioBoletim;
 
-public class UsuarioRepositorio {
+public class BoletimRepositorio {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	
-	public UsuarioRepositorio() {
+	public BoletimRepositorio() {
 		
 		emf = Persistence.createEntityManagerFactory("SystemSSA");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Usuario obterPorId(int id) {
+	public DiarioBoletim obterPorId(int id) {
 		em.getTransaction().begin();
-		Usuario usuario = em.find(Usuario.class, id);
+		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
 		em.getTransaction().commit();
 		emf.close();
-		return usuario;
+		return boletim;
 	}
 	
-	public void salvarUsuario(Usuario u) {
+	public void salvarBoletimDiario(DiarioBoletim u) {
 		em.getTransaction().begin();
-		Usuario usuario = new Usuario();        
+		DiarioBoletim usuario = new DiarioBoletim();        
 		em.merge(u);
 		em.getTransaction().commit();
 		em.close();
 		
 	}
-	public void removerUsuario(Usuario u) {
+	public void removerUsuario(DiarioBoletim u) {
 		em.getTransaction().begin();
 		em.remove(u);
 		em.getTransaction().commit();
 		em.close();
 	}
 	@SuppressWarnings("uncheked")
-	public List<Usuario> listarTodos(){
+	public List<DiarioBoletim> listarTodos(){
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Usuario id");
-		List<Usuario> usuarios = consulta.getResultList();
+		Query consulta = em.createQuery("select id from DiarioBoletim id");
+		List<DiarioBoletim> usuarios = consulta.getResultList();
 		em.getTransaction().commit();
 		em.close();
 		

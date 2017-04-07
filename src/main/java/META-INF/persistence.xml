@@ -2,6 +2,7 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="SystemSSA" transaction-type="RESOURCE_LOCAL">
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	
 	<class>com.ssa.Usuario</class>
 	<class>com.ssa.Imovel</class>
 	<class>com.ssa.Logradouro</class>
@@ -9,7 +10,7 @@
 	<class>com.ssa.Area</class>
 	<class>com.ssa.Quarteirao</class>
 	<class>com.ssa.LiraRato</class>
-	<class>com.ssa.DiarioBoletim</class>
+	<class>com.ssa.DiarioBoletim</class>	
 	
 	
 		<properties>
