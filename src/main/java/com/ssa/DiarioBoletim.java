@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -32,6 +34,12 @@ public class DiarioBoletim implements Serializable{
 	private int periodo;
 	@Column
 	private Date data_visita;
+	
+	@ManyToOne
+	@JoinColumn (name = "imovelDBoletim_id")
+	private Imovel imovel;
+	
+	
 	public Integer getId() {
 		return id;
 	}

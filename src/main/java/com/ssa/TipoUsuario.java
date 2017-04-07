@@ -23,6 +23,10 @@ public class TipoUsuario implements Serializable{
 	
 	@Column
 	private String descricao;
+	
+	@OneToMany(mappedBy = "tipoUsuario", targetEntity = Usuario.class, fetch = FetchType.LAZY)
+	private List<Usuario> usuarios;
+	
 
 	public Integer getId() {
 		return id;

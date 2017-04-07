@@ -1,12 +1,17 @@
 package com.ssa;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +24,18 @@ public class Logradouro{
 
 	@Column
 	private String nomeLogradouro;
+	
 	@Column
 	private String tipoLogradouro;
+	
+	@ManyToOne 
+	@JoinColumn (name = "quarteirao_id")
+	private Quarteirao quarteirao;
+	
+	@OneToMany (mappedBy = "logradouro", targetEntity = Imovel.class, fetch = FetchType.LAZY)
+	private List<Imovel> imoveis;
+	
+	
 	public Integer getId() {
 		return id;
 	}
