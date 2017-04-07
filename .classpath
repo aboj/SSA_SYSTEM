@@ -6,19 +6,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
-		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -27,12 +17,29 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySql"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/hibernate-entitymanager.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/hibernate-validator.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/javassist.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/jboss-archive-browsing.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/jta.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/hibernate/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="/home/ramon/Documentos/ASCORP/arquivos/mysql-connector-java-5.1.5-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
