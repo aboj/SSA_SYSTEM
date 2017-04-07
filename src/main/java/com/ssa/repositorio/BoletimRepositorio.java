@@ -17,7 +17,7 @@ public class BoletimRepositorio {
 	
 	public BoletimRepositorio() {
 		
-		emf = Persistence.createEntityManagerFactory("SystemSSA");
+		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
