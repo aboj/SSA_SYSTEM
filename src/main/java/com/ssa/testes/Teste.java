@@ -11,8 +11,8 @@ public class Teste {
 
 		UsuarioRepositorio respositorioUsuario = new UsuarioRepositorio();
 		Usuario usuario = new Usuario();
-		usuario.setNome("Joao da Silva");
-		usuario.setLogin("Joao");
+		usuario.setNome("Andre da Silva");
+		usuario.setLogin("Andre");
 		usuario.setSenha("1234");
 		usuario.setMatricula(13410);
 		usuario.setCpf(12343);
