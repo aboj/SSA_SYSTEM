@@ -26,7 +26,7 @@
 			<property name="use_sql_comments" value="true" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/DB_SSA"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="bankai"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 		</properties>
 	</persistence-unit>
