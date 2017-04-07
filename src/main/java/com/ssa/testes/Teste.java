@@ -11,12 +11,12 @@ public class Teste {
 
 		UsuarioRepositorio respositorioUsuario = new UsuarioRepositorio();
 		Usuario usuario = new Usuario();
-		usuario.setNome("Fulano da Silva");
-		usuario.setLogin("fulano");
+		usuario.setNome("Joao da Silva");
+		usuario.setLogin("Joao");
 		usuario.setSenha("1234");
 		usuario.setMatricula(13410);
 		usuario.setCpf(12343);
-		respositorioUsuario.removerUsuario(usuario);
+		respositorioUsuario.salvarUsuario(usuario);
 		
 	}
 
