@@ -1,10 +1,10 @@
-package com.ssa.testes;
+package com.ssa;
 
 import com.ssa.TipoUsuario;
 import com.ssa.Usuario;
 import com.ssa.repositorio.UsuarioRepositorio;
 
-public class TesteUsuario {
+public class Teste {
 
 	public static void main(String[] args) {
 		
@@ -19,7 +19,6 @@ public class TesteUsuario {
 		usuario.setMatricula(56464);
 		usuario.setLogin("joana");
 		usuario.setSenha("joaninhaehnois");
-		usuario.setTipoUsuario(tipo);
 		
 		repositorio.salvarUsuario(usuario);
 
