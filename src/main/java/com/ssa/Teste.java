@@ -1,15 +1,18 @@
 package com.ssa;
 
 import java.util.List;
+import java.util.Scanner;
 
 import com.ssa.TipoUsuario;
 import com.ssa.Usuario;
 import com.ssa.repositorio.BoletimRepositorio;
 import com.ssa.repositorio.UsuarioRepositorio;
 
+
 public class Teste {
 
 	public static void main(String[] args) {
+		
 		
 		UsuarioRepositorio repositorio = new UsuarioRepositorio();
 		Usuario usuario = new Usuario();
@@ -22,7 +25,6 @@ public class Teste {
 		usuario.setMatricula(56464);
 		usuario.setLogin("Joao");
 		usuario.setSenha("joaninhaehnois");
-		
 		
 		
 		UsuarioRepositorio respositorioUsuario = new UsuarioRepositorio();
@@ -38,12 +40,14 @@ public class Teste {
 		System.out.println(usuario.getNome());	
 		}
 		*/
-		
+		/*
 		BoletimRepositorio boletim = new BoletimRepositorio();
 		BoletimRepositorio testeboletim = new BoletimRepositorio();
 		DiarioBoletim boletimdiario = testeboletim.obterPorId(2);
 		System.out.println(boletimdiario.getMotivo());
-
+		*/
+		
+		
 	}
 
 }
