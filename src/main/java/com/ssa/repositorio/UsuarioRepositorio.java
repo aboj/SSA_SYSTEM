@@ -74,7 +74,6 @@ public class UsuarioRepositorio {
 			}
 		}
 	}
-	@SuppressWarnings("uncheked")
 	public List<Usuario> listarTodos(){
 		try{
 		em.getTransaction().begin();

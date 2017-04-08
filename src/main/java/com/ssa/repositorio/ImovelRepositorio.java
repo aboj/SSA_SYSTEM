@@ -74,7 +74,6 @@ public class ImovelRepositorio {
 			}
 		}
 	}
-	@SuppressWarnings("uncheked")
 	public List<Imovel> listarTodos(){
 		try{
 		em.getTransaction().begin();

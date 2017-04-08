@@ -74,7 +74,6 @@ public class LogradouroRepositorio {
 			}
 		}
 	}
-	@SuppressWarnings("uncheked")
 	public List<Logradouro> listarTodos(){
 		try{
 		em.getTransaction().begin();

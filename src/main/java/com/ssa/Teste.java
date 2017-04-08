@@ -27,7 +27,9 @@ public class Teste {
 		
 		UsuarioRepositorio respositorioUsuario = new UsuarioRepositorio();
 		UsuarioRepositorio teste = new UsuarioRepositorio();
-		
+		Usuario nomeusuuario = teste.obterPorId(13);
+		nomeusuuario.setCpf(1234);
+		repositorio.salvarUsuario(nomeusuuario);
 		
 		
 		/*
@@ -35,13 +37,13 @@ public class Teste {
 		for(Usuario usuarionomes : usuarios) {
 		System.out.println(usuario.getNome());	
 		}
-		
+		*/
 		
 		BoletimRepositorio boletim = new BoletimRepositorio();
 		BoletimRepositorio testeboletim = new BoletimRepositorio();
 		DiarioBoletim boletimdiario = testeboletim.obterPorId(2);
 		System.out.println(boletimdiario.getMotivo());
-*/
+
 	}
 
 }
