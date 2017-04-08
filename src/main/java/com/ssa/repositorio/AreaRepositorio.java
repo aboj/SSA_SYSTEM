@@ -3,51 +3,68 @@ package com.ssa.repositorio;
 import java.sql.PreparedStatement;
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 
-import com.ssa.DiarioBoletim;
+import com.ssa.Area;
 
-public class BoletimRepositorio {
+public class AreaRepositorio {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
+
 	
-	public BoletimRepositorio() {
+	public AreaRepositorio() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public DiarioBoletim obterPorId(int id) {
-	try {
+	public Area obterPorId(int id) {
+		try {
 		em.getTransaction().begin();
-		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
+		Area area = em.find(Area.class, id);
 		em.getTransaction().commit();
-		return boletim;
+		return area;
 
-	}finally{
-		if(preparedStatement != null) {
-			emf.close();
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
 		}
-		if(preparedStatement != null) {
-			em.getTransaction().begin();
-		}
-	}
 	}
 	
-	public void salvarBoletimDiario(DiarioBoletim b) {
+	public void salvarArea(Area a) {
 		try {
 		em.getTransaction().begin();
-		DiarioBoletim usuario = new DiarioBoletim();        
-		em.merge(b);
+		Area are = new Area();        
+		em.merge(a);
 		em.getTransaction().commit();
+		} finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 		
+	}
+	public void removerArea(int id) {
+		try {
+		em.getTransaction().begin();
+		Area lirarato = em.find(Area.class, id);
+		em.remove(lirarato);
+		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
 				emf.close();
@@ -57,12 +74,13 @@ public class BoletimRepositorio {
 			}
 		}
 	}
-	public void removerBoletim(int id) {
-		try {
+	public List<Area> listarTodos(){
+		try{
 		em.getTransaction().begin();
-		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
-		em.remove(boletim);
+		Query consulta = em.createQuery("select id from Area id");
+		List<Area> areas = consulta.getResultList();
 		em.getTransaction().commit();
+		return areas;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -72,23 +90,7 @@ public class BoletimRepositorio {
 				em.getTransaction().begin();
 			}
 		}
-	}
-	public List<DiarioBoletim> listarTodos(){
-		try {
-		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from DiarioBoletim id");
-		List<DiarioBoletim> boletins = consulta.getResultList();
-		em.getTransaction().commit();
-		return boletins;
-
-		}finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
-		}
+		
 	}
 	
 }

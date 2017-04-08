@@ -1,6 +1,7 @@
 package com.ssa;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 @Entity
 @Table(name="tb_usuario")
@@ -27,22 +31,27 @@ public class Usuario implements Serializable{
 	@Column
 	private int matricula;
 	@Column
-	private int cpf;
+	private long cpf;
 	
-	public int getCpf() {
+	@ManyToOne
+	@JoinColumn(name="tipousuario_id")
+	private TipoUsuario tipoUsuario;
+	
+	@ManyToMany(mappedBy = "usuarios")
+	private List<Area> areas;
+	
+	public long getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
-	public long getTipoUsuario() {
+	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
-	public void setTipoUsuario(long tipoUsuario) {
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	@Column long tipoUsuario;
-	
 	
 	public int getMatricula() {
 		return matricula;

@@ -1,6 +1,8 @@
 package com.ssa.repositorio;
 
+import java.sql.PreparedStatement;
 import java.util.List;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,6 +16,8 @@ public class UsuarioRepositorio {
 
 	EntityManagerFactory emf;
 	EntityManager em;
+	PreparedStatement preparedStatement = null;
+
 	
 	public UsuarioRepositorio() {
 		
@@ -23,36 +27,69 @@ public class UsuarioRepositorio {
 	}
 	
 	public Usuario obterPorId(int id) {
+		try {
 		em.getTransaction().begin();
 		Usuario usuario = em.find(Usuario.class, id);
 		em.getTransaction().commit();
-		emf.close();
 		return usuario;
+
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 	}
 	
 	public void salvarUsuario(Usuario u) {
+		try {
 		em.getTransaction().begin();
 		Usuario usuario = new Usuario();        
 		em.merge(u);
 		em.getTransaction().commit();
-		em.close();
+		} finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 		
 	}
-	public void removerUsuario(Usuario u) {
+	public void removerUsuario(int id) {
+		try {
 		em.getTransaction().begin();
-		em.remove(u);
+		Usuario usuario = em.find(Usuario.class, id);
+		em.remove(usuario);
 		em.getTransaction().commit();
-		em.close();
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 	}
-	@SuppressWarnings("uncheked")
 	public List<Usuario> listarTodos(){
+		try{
 		em.getTransaction().begin();
 		Query consulta = em.createQuery("select id from Usuario id");
 		List<Usuario> usuarios = consulta.getResultList();
 		em.getTransaction().commit();
-		em.close();
+		return usuarios;
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 		
-	return usuarios;
 	}
 	
 }

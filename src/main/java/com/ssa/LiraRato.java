@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -69,6 +71,10 @@ public class LiraRato implements Serializable{
 	private int granulado;
 	@Column
 	private int supervisor;
+	
+	@ManyToOne
+	@JoinColumn (name = "imovelLRato_id")
+	private Imovel imovel;
 	
 	
 	public Integer getId() {

@@ -1,12 +1,17 @@
 package com.ssa;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -20,6 +25,18 @@ public class Imovel implements Serializable {
 
 	@Column
 	private int numero;
+	
+	@ManyToOne
+	@JoinColumn (name = "logradouro_id")
+	private Logradouro logradouro;
+	
+	@OneToMany (mappedBy = "imovel", targetEntity = DiarioBoletim.class, fetch =FetchType.LAZY)
+	private List<DiarioBoletim> dboletim;
+	
+	@OneToMany (mappedBy = "imovel", targetEntity = LiraRato.class, fetch =FetchType.LAZY)
+	private List<LiraRato> lRato;
+	
+	
 	public Integer getId() {
 		return id;
 	}

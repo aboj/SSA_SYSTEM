@@ -11,6 +11,7 @@
 	<class>com.ssa.Quarteirao</class>
 	<class>com.ssa.LiraRato</class>
 	<class>com.ssa.DiarioBoletim</class>	
+	<class>com.ssa.BoletimSupervisor</class>	
 	
 	
 		<properties>

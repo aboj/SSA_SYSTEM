@@ -2,12 +2,9 @@ package com.ssa;
 
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="tb_area")
@@ -23,6 +20,14 @@ public class Area implements Serializable{
 	@Column
 	private int qtdQuarteirao;
 	
+	@ManyToMany
+	@JoinTable(name = "Area_Usuario",
+			joinColumns = @JoinColumn(name = "area_id"),
+			inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+	private List<Usuario> usuarios;
+	
+	@OneToMany(mappedBy = "area", targetEntity = Quarteirao.class, fetch = FetchType.LAZY)
+	private List<Quarteirao> quarteirao;
 	
 	public long getIdArea() {
 		return idArea;
