@@ -3,51 +3,68 @@ package com.ssa.repositorio;
 import java.sql.PreparedStatement;
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 
-import com.ssa.DiarioBoletim;
+import com.ssa.LiraRato;
 
-public class BoletimRepositorio {
+public class LiraRatoRepositorio {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
+
 	
-	public BoletimRepositorio() {
+	public LiraRatoRepositorio() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public DiarioBoletim obterPorId(int id) {
-	try {
+	public LiraRato obterPorId(int id) {
+		try {
 		em.getTransaction().begin();
-		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
+		LiraRato lirarato = em.find(LiraRato.class, id);
 		em.getTransaction().commit();
-		return boletim;
+		return lirarato;
 
-	}finally{
-		if(preparedStatement != null) {
-			emf.close();
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
 		}
-		if(preparedStatement != null) {
-			em.getTransaction().begin();
-		}
-	}
 	}
 	
-	public void salvarBoletimDiario(DiarioBoletim b) {
+	public void salvarLiraRato(LiraRato u) {
 		try {
 		em.getTransaction().begin();
-		DiarioBoletim usuario = new DiarioBoletim();        
-		em.merge(b);
+		LiraRato lirarato = new LiraRato();        
+		em.merge(u);
 		em.getTransaction().commit();
+		} finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 		
+	}
+	public void removerLiraRato(int id) {
+		try {
+		em.getTransaction().begin();
+		LiraRato lirarato = em.find(LiraRato.class, id);
+		em.remove(lirarato);
+		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
 				emf.close();
@@ -57,12 +74,13 @@ public class BoletimRepositorio {
 			}
 		}
 	}
-	public void removerBoletim(int id) {
-		try {
+	public List<LiraRato> listarTodos(){
+		try{
 		em.getTransaction().begin();
-		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
-		em.remove(boletim);
+		Query consulta = em.createQuery("select id from Quarteirao id");
+		List<LiraRato> lirasrato = consulta.getResultList();
 		em.getTransaction().commit();
+		return lirasrato;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -72,23 +90,7 @@ public class BoletimRepositorio {
 				em.getTransaction().begin();
 			}
 		}
-	}
-	public List<DiarioBoletim> listarTodos(){
-		try {
-		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from DiarioBoletim id");
-		List<DiarioBoletim> boletins = consulta.getResultList();
-		em.getTransaction().commit();
-		return boletins;
-
-		}finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
-		}
+		
 	}
 	
 }

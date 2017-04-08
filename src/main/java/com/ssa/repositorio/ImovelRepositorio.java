@@ -3,51 +3,68 @@ package com.ssa.repositorio;
 import java.sql.PreparedStatement;
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 
-import com.ssa.DiarioBoletim;
+import com.ssa.Imovel;
 
-public class BoletimRepositorio {
+public class ImovelRepositorio {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
+
 	
-	public BoletimRepositorio() {
+	public ImovelRepositorio() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public DiarioBoletim obterPorId(int id) {
-	try {
+	public Imovel obterPorId(int id) {
+		try {
 		em.getTransaction().begin();
-		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
+		Imovel imovel = em.find(Imovel.class, id);
 		em.getTransaction().commit();
-		return boletim;
+		return imovel;
 
-	}finally{
-		if(preparedStatement != null) {
-			emf.close();
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
 		}
-		if(preparedStatement != null) {
-			em.getTransaction().begin();
-		}
-	}
 	}
 	
-	public void salvarBoletimDiario(DiarioBoletim b) {
+	public void salvarUsuario(Imovel i) {
 		try {
 		em.getTransaction().begin();
-		DiarioBoletim usuario = new DiarioBoletim();        
-		em.merge(b);
+		Imovel imovel = new Imovel();        
+		em.merge(i);
 		em.getTransaction().commit();
+		} finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 		
+	}
+	public void removerImovel(int id) {
+		try {
+		em.getTransaction().begin();
+		Imovel imovel = em.find(Imovel.class, id);
+		em.remove(imovel);
+		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
 				emf.close();
@@ -57,12 +74,14 @@ public class BoletimRepositorio {
 			}
 		}
 	}
-	public void removerBoletim(int id) {
-		try {
+	@SuppressWarnings("uncheked")
+	public List<Imovel> listarTodos(){
+		try{
 		em.getTransaction().begin();
-		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
-		em.remove(boletim);
+		Query consulta = em.createQuery("select id from Imovel id");
+		List<Imovel> imoveis = consulta.getResultList();
 		em.getTransaction().commit();
+		return imoveis;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -72,23 +91,7 @@ public class BoletimRepositorio {
 				em.getTransaction().begin();
 			}
 		}
-	}
-	public List<DiarioBoletim> listarTodos(){
-		try {
-		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from DiarioBoletim id");
-		List<DiarioBoletim> boletins = consulta.getResultList();
-		em.getTransaction().commit();
-		return boletins;
-
-		}finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
-		}
+		
 	}
 	
 }
