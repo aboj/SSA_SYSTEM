@@ -28,7 +28,7 @@ public class Teste {
 		UsuarioRepositorio respositorioUsuario = new UsuarioRepositorio();
 		UsuarioRepositorio teste = new UsuarioRepositorio();
 		Usuario nomeusuuario = teste.obterPorId(13);
-		nomeusuuario.setCpf(1234);
+		nomeusuuario.setCpf(121234);
 		repositorio.salvarUsuario(nomeusuuario);
 		
 		
