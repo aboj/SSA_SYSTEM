@@ -3,6 +3,8 @@ package com.ssa;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,6 +20,8 @@ import javax.persistence.ManyToMany;
 
 @Entity
 @Table(name="tb_usuario")
+@Access(AccessType.FIELD)
+
 public class Usuario implements Serializable{
 	
 	@Id

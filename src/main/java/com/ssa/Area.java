@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_area")
+@Access(AccessType.FIELD)
 public class Area implements Serializable{
 	
 	@Id

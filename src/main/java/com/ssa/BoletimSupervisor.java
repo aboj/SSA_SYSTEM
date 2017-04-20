@@ -2,6 +2,8 @@ package com.ssa;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tb_boletimSupervisor")
+@Access(AccessType.FIELD)
 
 public class BoletimSupervisor implements Serializable{
 
