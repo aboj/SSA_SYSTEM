@@ -80,7 +80,7 @@ public class Teste {
 					System.out.printf("Ciclo:");
 					boletim.setCiclo(entrada.nextInt());
 					System.out.printf("Motivo:");
-					boletim.setMotivo(Motivo.Desocupado);
+					boletim.setMotivo(Motivo.Fechado);
 					System.out.printf("Numero da planilha:");
 					boletim.setNumero_planilha(entrada.nextInt());
 					System.out.printf("Periodo:");
