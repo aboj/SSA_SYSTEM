@@ -2,8 +2,12 @@ package com.ssa;
 
 import java.io.Serializable;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,66 +15,71 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.ssa.DiarioBoletim.TipoImovel;
+
 @Entity
 @Table(name="tb_lirarato")
+@Access(AccessType.FIELD)
+
 public class LiraRato implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Enumerated(EnumType.STRING)
+    TipoImovel tipoImovel;
 	@Column
-	private int tipoImovel;
+	private boolean trabalhado;
 	@Column
-	private int situacao;
+	private boolean sinaisAtivos;
 	@Column
-	private int sinaisAtivos;
+	private boolean ratanazas;
 	@Column
-	private int ratanazas;
+	private boolean ratoDeTelhado;
 	@Column
-	private int ratoDeTelhado;
+	private boolean camundongo;
 	@Column
-	private int camundongo;
+	private boolean indeterminado;
 	@Column
-	private int indeterminado;
+	private boolean ralos_esgostos_danificados;
 	@Column
-	private int ralos_esgostos_danificados;
+	private boolean materialConstrucao;
 	@Column
-	private int materialConstrucao;
+	private boolean entulho;
 	@Column
-	private int entulho;
+	private boolean lixo_mal_acondicionado;
 	@Column
-	private int lixo_mal_acondicionado;
+	private boolean alimento_exposto;
 	@Column
-	private int alimento_exposto;
+	private boolean quintal_sem_capinacao;
 	@Column
-	private int quintal_sem_capinacao;
+	private boolean frestas_em_estruturas;
 	@Column
-	private int frestas_em_estruturas;
+	private boolean area_alagavel;
 	@Column
-	private int area_alagavel;
+	private boolean proximidade_canal;
 	@Column
-	private int proximidade_canal;
+	private boolean drenagem_inadequada;
 	@Column
-	private int drenagem_inadequada;
+	private boolean esgostamento_inadequado;
 	@Column
-	private int esgostamento_inadequado;
+	private boolean pontos_criticos_lixo;
 	@Column
-	private int pontos_criticos_lixo;
+	private boolean pontos_confinamento;
 	@Column
-	private int pontos_confinamento;
+	private boolean terreno_baldio;
 	@Column
-	private int terreno_baldio;
+	private boolean imoveis_abandonados;
 	@Column
-	private int imoveis_abandonados;
+	private long parafinado;
 	@Column
-	private int parafinado;
+	private long po_de_contato;
 	@Column
-	private int po_de_contato;
+	private long granulado;
 	@Column
-	private int granulado;
-	@Column
-	private int supervisor;
+	private long supervisor;
+	
 	
 	@ManyToOne
 	@JoinColumn (name = "imovelLRato_id")
@@ -83,163 +92,179 @@ public class LiraRato implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getTipoImovel() {
-		return tipoImovel;
+	public boolean isTrabalhado() {
+		return trabalhado;
 	}
-	public void setTipoImovel(int tipoImovel) {
-		this.tipoImovel = tipoImovel;
+	public void setTrabalhado(boolean trabalhado) {
+		this.trabalhado = trabalhado;
 	}
-	public int getSituacao() {
-		return situacao;
-	}
-	public void setSituacao(int situacao) {
-		this.situacao = situacao;
-	}
-	public int getSinaisAtivos() {
+	public boolean isSinaisAtivos() {
 		return sinaisAtivos;
 	}
-	public void setSinaisAtivos(int sinaisAtivos) {
+	public void setSinaisAtivos(boolean sinaisAtivos) {
 		this.sinaisAtivos = sinaisAtivos;
 	}
-	public int getRatanazas() {
+	public boolean isRatanazas() {
 		return ratanazas;
 	}
-	public void setRatanazas(int ratanazas) {
+	public void setRatanazas(boolean ratanazas) {
 		this.ratanazas = ratanazas;
 	}
-	public int getRatoDeTelhado() {
+	public boolean isRatoDeTelhado() {
 		return ratoDeTelhado;
 	}
-	public void setRatoDeTelhado(int ratoDeTelhado) {
+	public void setRatoDeTelhado(boolean ratoDeTelhado) {
 		this.ratoDeTelhado = ratoDeTelhado;
 	}
-	public int getCamundongo() {
+	public boolean isCamundongo() {
 		return camundongo;
 	}
-	public void setCamundongo(int camundongo) {
+	public void setCamundongo(boolean camundongo) {
 		this.camundongo = camundongo;
 	}
-	public int getIndeterminado() {
+	public boolean isIndeterminado() {
 		return indeterminado;
 	}
-	public void setIndeterminado(int indeterminado) {
+	public void setIndeterminado(boolean indeterminado) {
 		this.indeterminado = indeterminado;
 	}
-	public int getRalos_esgostos_danificados() {
+	public boolean isRalos_esgostos_danificados() {
 		return ralos_esgostos_danificados;
 	}
-	public void setRalos_esgostos_danificados(int ralos_esgostos_danificados) {
+	public void setRalos_esgostos_danificados(boolean ralos_esgostos_danificados) {
 		this.ralos_esgostos_danificados = ralos_esgostos_danificados;
 	}
-	public int getMaterialConstrucao() {
+	public boolean isMaterialConstrucao() {
 		return materialConstrucao;
 	}
-	public void setMaterialConstrucao(int materialConstrucao) {
+	public void setMaterialConstrucao(boolean materialConstrucao) {
 		this.materialConstrucao = materialConstrucao;
 	}
-	public int getEntulho() {
+	public boolean isEntulho() {
 		return entulho;
 	}
-	public void setEntulho(int entulho) {
+	public void setEntulho(boolean entulho) {
 		this.entulho = entulho;
 	}
-	public int getLixo_mal_acondicionado() {
+	public boolean isLixo_mal_acondicionado() {
 		return lixo_mal_acondicionado;
 	}
-	public void setLixo_mal_acondicionado(int lixo_mal_acondicionado) {
+	public void setLixo_mal_acondicionado(boolean lixo_mal_acondicionado) {
 		this.lixo_mal_acondicionado = lixo_mal_acondicionado;
 	}
-	public int getAlimento_exposto() {
+	public boolean isAlimento_exposto() {
 		return alimento_exposto;
 	}
-	public void setAlimento_exposto(int alimento_exposto) {
+	public void setAlimento_exposto(boolean alimento_exposto) {
 		this.alimento_exposto = alimento_exposto;
 	}
-	public int getQuintal_sem_capinacao() {
+	public boolean isQuintal_sem_capinacao() {
 		return quintal_sem_capinacao;
 	}
-	public void setQuintal_sem_capinacao(int quintal_sem_capinacao) {
+	public void setQuintal_sem_capinacao(boolean quintal_sem_capinacao) {
 		this.quintal_sem_capinacao = quintal_sem_capinacao;
 	}
-	public int getFrestas_em_estruturas() {
+	public boolean isFrestas_em_estruturas() {
 		return frestas_em_estruturas;
 	}
-	public void setFrestas_em_estruturas(int frestas_em_estruturas) {
+	public void setFrestas_em_estruturas(boolean frestas_em_estruturas) {
 		this.frestas_em_estruturas = frestas_em_estruturas;
 	}
-	public int getArea_alagavel() {
+	public boolean isArea_alagavel() {
 		return area_alagavel;
 	}
-	public void setArea_alagavel(int area_alagavel) {
+	public void setArea_alagavel(boolean area_alagavel) {
 		this.area_alagavel = area_alagavel;
 	}
-	public int getProximidade_canal() {
+	public boolean isProximidade_canal() {
 		return proximidade_canal;
 	}
-	public void setProximidade_canal(int proximidade_canal) {
+	public void setProximidade_canal(boolean proximidade_canal) {
 		this.proximidade_canal = proximidade_canal;
 	}
-	public int getDrenagem_inadequada() {
+	public boolean isDrenagem_inadequada() {
 		return drenagem_inadequada;
 	}
-	public void setDrenagem_inadequada(int drenagem_inadequada) {
+	public void setDrenagem_inadequada(boolean drenagem_inadequada) {
 		this.drenagem_inadequada = drenagem_inadequada;
 	}
-	public int getEsgostamento_inadequado() {
+	public boolean isEsgostamento_inadequado() {
 		return esgostamento_inadequado;
 	}
-	public void setEsgostamento_inadequado(int esgostamento_inadequado) {
+	public void setEsgostamento_inadequado(boolean esgostamento_inadequado) {
 		this.esgostamento_inadequado = esgostamento_inadequado;
 	}
-	public int getPontos_criticos_lixo() {
+	public boolean isPontos_criticos_lixo() {
 		return pontos_criticos_lixo;
 	}
-	public void setPontos_criticos_lixo(int pontos_criticos_lixo) {
+	public void setPontos_criticos_lixo(boolean pontos_criticos_lixo) {
 		this.pontos_criticos_lixo = pontos_criticos_lixo;
 	}
-	public int getPontos_confinamento() {
+	public boolean isPontos_confinamento() {
 		return pontos_confinamento;
 	}
-	public void setPontos_confinamento(int pontos_confinamento) {
+	public void setPontos_confinamento(boolean pontos_confinamento) {
 		this.pontos_confinamento = pontos_confinamento;
 	}
-	public int getTerreno_baldio() {
+	public boolean isTerreno_baldio() {
 		return terreno_baldio;
 	}
-	public void setTerreno_baldio(int terreno_baldio) {
+	public void setTerreno_baldio(boolean terreno_baldio) {
 		this.terreno_baldio = terreno_baldio;
 	}
-	public int getImoveis_abandonados() {
+	public boolean isImoveis_abandonados() {
 		return imoveis_abandonados;
 	}
-	public void setImoveis_abandonados(int imoveis_abandonados) {
+	public void setImoveis_abandonados(boolean imoveis_abandonados) {
 		this.imoveis_abandonados = imoveis_abandonados;
 	}
-	public int getParafinado() {
+	public long getParafinado() {
 		return parafinado;
 	}
-	public void setParafinado(int parafinado) {
+	public void setParafinado(long parafinado) {
 		this.parafinado = parafinado;
 	}
-	public int getPo_de_contato() {
+	public long getPo_de_contato() {
 		return po_de_contato;
 	}
-	public void setPo_de_contato(int po_de_contato) {
+	public void setPo_de_contato(long po_de_contato) {
 		this.po_de_contato = po_de_contato;
 	}
-	public int getGranulado() {
+	public long getGranulado() {
 		return granulado;
 	}
-	public void setGranulado(int granulado) {
+	public void setGranulado(long granulado) {
 		this.granulado = granulado;
 	}
-	public int getSupervisor() {
+	public long getSupervisor() {
 		return supervisor;
 	}
-	public void setSupervisor(int supervisor) {
+	public void setSupervisor(long supervisor) {
 		this.supervisor = supervisor;
 	}
-
+	public Imovel getImovel() {
+		return imovel;
+	}
+	public void setImovel(Imovel imovel) {
+		this.imovel = imovel;
+	}
 	
+	public enum TipoImovel {
+	    Residencia("1"),
+	    Comercio("2"),
+		ServicosPrivadosOuAdmPublica("3"),
+		Industria("4"),
+		ResidenciasComComercio("5"),
+		TerrenoBaldio("6"),
+		PontoEstrategico("7"),
+		Outro("8");
+	    private String valor;
+	    private TipoImovel(String valor) {
+	        this.valor = valor;
+	    }
+	}
+	public void setTipoImovel(TipoImovel tipoImovel) {
+		this.tipoImovel = tipoImovel;
 	
+}
 }

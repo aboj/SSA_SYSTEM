@@ -44,19 +44,12 @@ public class LiraRatoRepositorio {
 	}
 	
 	public void salvarLiraRato(LiraRato u) {
-		try {
 		em.getTransaction().begin();
 		LiraRato lirarato = new LiraRato();        
 		em.merge(u);
 		em.getTransaction().commit();
-		} finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
-		}
+		emf.close();
+		
 		
 	}
 	public void removerLiraRato(int id) {
