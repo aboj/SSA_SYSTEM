@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.Imovel;
 
-import com.ssa.Quarteirao;
-
-public class QuarteiraoRepositorio {
+public class ImovelController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public QuarteiraoRepositorio() {
+	public ImovelController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Quarteirao obterPorId(int id) {
+	public Imovel obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		Quarteirao quarteirao = em.find(Quarteirao.class, id);
+		Imovel imovel = em.find(Imovel.class, id);
 		em.getTransaction().commit();
-		return quarteirao;
+		return imovel;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,11 +42,11 @@ public class QuarteiraoRepositorio {
 		}
 	}
 	
-	public void salvarlogradouro(Quarteirao u) {
+	public void salvarUsuario(Imovel i) {
 		try {
 		em.getTransaction().begin();
-		Quarteirao tipousuario = new Quarteirao();        
-		em.merge(u);
+		Imovel imovel = new Imovel();        
+		em.merge(i);
 		em.getTransaction().commit();
 		} finally{
 			if(preparedStatement != null) {
@@ -59,11 +58,11 @@ public class QuarteiraoRepositorio {
 		}
 		
 	}
-	public void removerQuarteirao(int id) {
+	public void removerImovel(int id) {
 		try {
 		em.getTransaction().begin();
-		Quarteirao quarteirao = em.find(Quarteirao.class, id);
-		em.remove(quarteirao);
+		Imovel imovel = em.find(Imovel.class, id);
+		em.remove(imovel);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +73,13 @@ public class QuarteiraoRepositorio {
 			}
 		}
 	}
-	public List<Quarteirao> listarTodos(){
+	public List<Imovel> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Quarteirao id");
-		List<Quarteirao> quarteiroes = consulta.getResultList();
+		Query consulta = em.createQuery("select id from Imovel id");
+		List<Imovel> imoveis = consulta.getResultList();
 		em.getTransaction().commit();
-		return quarteiroes;
+		return imoveis;
 
 		}finally{
 			if(preparedStatement != null) {

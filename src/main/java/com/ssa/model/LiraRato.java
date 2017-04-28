@@ -1,4 +1,4 @@
-package com.ssa;
+package com.ssa.model;
 
 import java.io.Serializable;
 
@@ -15,7 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.ssa.DiarioBoletim.TipoImovel;
+import com.ssa.model.DiarioBoletim.TipoImovel;
 
 @Entity
 @Table(name="tb_lirarato")

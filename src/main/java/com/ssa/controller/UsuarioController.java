@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,16 +9,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.Usuario;
 
-import com.ssa.Usuario;
-
-public class UsuarioRepositorio {
+public class UsuarioController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 
 	
-	public UsuarioRepositorio() {
+	public UsuarioController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();

@@ -1,18 +1,18 @@
-package com.ssa;
+package com.ssa.model;
 
 import java.util.List;
 import java.util.Scanner;
 
-import com.ssa.DiarioBoletim.Motivo;
-import com.ssa.DiarioBoletim.Situacao;
-import com.ssa.DiarioBoletim.TipoImovel;
-import com.ssa.TipoUsuario;
-import com.ssa.Usuario;
-import com.ssa.repositorio.BoletimRepositorio;
-import com.ssa.repositorio.LiraRatoRepositorio;
-import com.ssa.repositorio.TipoUsuarioRepositorio;
-import com.ssa.repositorio.UsuarioRepositorio;
-import com.ssa.LiraRato;
+import com.ssa.controller.BoletimController;
+import com.ssa.controller.LiraRatoController;
+import com.ssa.controller.TipoUsuarioController;
+import com.ssa.controller.UsuarioController;
+import com.ssa.model.LiraRato;
+import com.ssa.model.TipoUsuario;
+import com.ssa.model.Usuario;
+import com.ssa.model.DiarioBoletim.Motivo;
+import com.ssa.model.DiarioBoletim.Situacao;
+import com.ssa.model.DiarioBoletim.TipoImovel;
 
 
 
@@ -65,14 +65,14 @@ public class Teste {
 		
 	}
 	public static void DeletarUsuario(){
-		UsuarioRepositorio repositorioUsuario = new UsuarioRepositorio(); BoletimRepositorio repositorioboletim = new BoletimRepositorio();
+		UsuarioController repositorioUsuario = new UsuarioController(); BoletimController repositorioboletim = new BoletimController();
 				Scanner entrada = new Scanner(System.in);
 				System.out.printf("Digite o ID:");
 				int aux = entrada.nextInt();
 				repositorioUsuario.removerUsuario(aux);
 			}
 	public static void SalvarBoletim(){		
-		UsuarioRepositorio repositorioUsuario = new UsuarioRepositorio(); BoletimRepositorio repositorioboletim = new BoletimRepositorio();
+		UsuarioController repositorioUsuario = new UsuarioController(); BoletimController repositorioboletim = new BoletimController();
 				Scanner entrada = new Scanner(System.in);
 				DiarioBoletim boletim = new DiarioBoletim();
 				System.out.println("Criando Boletim Diario:");
@@ -94,7 +94,7 @@ public class Teste {
 					repositorioboletim.salvarBoletimDiario(boletim);			
 			}
 	public static void SalvarLiraRato(){		
-		LiraRatoRepositorio liraRatoRepositorio = new LiraRatoRepositorio(); 
+		LiraRatoController liraRatoRepositorio = new LiraRatoController(); 
 				LiraRato lirarato = new LiraRato();
 				System.out.println("Criando Boletim Diario:");
 				
@@ -102,7 +102,7 @@ public class Teste {
 					lirarato.setArea_alagavel(false);
 					lirarato.setDrenagem_inadequada(false);
 					lirarato.setEsgostamento_inadequado(true);
-					lirarato.setTipoImovel(com.ssa.LiraRato.TipoImovel.Comercio);
+					lirarato.setTipoImovel(com.ssa.model.LiraRato.TipoImovel.Comercio);
 					liraRatoRepositorio.salvarLiraRato(lirarato);			
 			}
 

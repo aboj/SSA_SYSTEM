@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.Logradouro;
 
-import com.ssa.Area;
-
-public class AreaRepositorio {
+public class LogradouroController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public AreaRepositorio() {
+	public LogradouroController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Area obterPorId(int id) {
+	public Logradouro obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		Area area = em.find(Area.class, id);
+		Logradouro logradouro = em.find(Logradouro.class, id);
 		em.getTransaction().commit();
-		return area;
+		return logradouro;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,11 +42,11 @@ public class AreaRepositorio {
 		}
 	}
 	
-	public void salvarArea(Area a) {
+	public void salvarlogradouro(Logradouro u) {
 		try {
 		em.getTransaction().begin();
-		Area are = new Area();        
-		em.merge(a);
+		Logradouro tipousuario = new Logradouro();        
+		em.merge(u);
 		em.getTransaction().commit();
 		} finally{
 			if(preparedStatement != null) {
@@ -59,11 +58,11 @@ public class AreaRepositorio {
 		}
 		
 	}
-	public void removerArea(int id) {
+	public void removerLogradouro(int id) {
 		try {
 		em.getTransaction().begin();
-		Area lirarato = em.find(Area.class, id);
-		em.remove(lirarato);
+		Logradouro tipousuario = em.find(Logradouro.class, id);
+		em.remove(tipousuario);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +73,13 @@ public class AreaRepositorio {
 			}
 		}
 	}
-	public List<Area> listarTodos(){
+	public List<Logradouro> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Area id");
-		List<Area> areas = consulta.getResultList();
+		Query consulta = em.createQuery("select id from Logradouro id");
+		List<Logradouro> tipousuarios = consulta.getResultList();
 		em.getTransaction().commit();
-		return areas;
+		return tipousuarios;
 
 		}finally{
 			if(preparedStatement != null) {

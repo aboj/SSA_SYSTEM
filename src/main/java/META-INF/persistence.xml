@@ -3,15 +3,15 @@
 	<persistence-unit name="SSASystem" transaction-type="RESOURCE_LOCAL">
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	
-	<class>com.ssa.Usuario</class>
-	<class>com.ssa.Imovel</class>
-	<class>com.ssa.Logradouro</class>
-	<class>com.ssa.TipoUsuario</class>
-	<class>com.ssa.Area</class>
-	<class>com.ssa.Quarteirao</class>
-	<class>com.ssa.LiraRato</class>
-	<class>com.ssa.DiarioBoletim</class>	
-	<class>com.ssa.BoletimSupervisor</class>	
+	<class>com.ssa.model.Usuario</class>
+	<class>com.ssa.model.Imovel</class>
+	<class>com.ssa.model.Logradouro</class>
+	<class>com.ssa.model.TipoUsuario</class>
+	<class>com.ssa.model.Area</class>
+	<class>com.ssa.model.Quarteirao</class>
+	<class>com.ssa.model.LiraRato</class>
+	<class>com.ssa.model.DiarioBoletim</class>	
+	<class>com.ssa.model.BoletimSupervisor</class>	
 	
 	
 		<properties>
