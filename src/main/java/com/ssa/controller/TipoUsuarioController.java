@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.TipoUsuario;
 
-import com.ssa.LiraRato;
-
-public class LiraRatoRepositorio {
+public class TipoUsuarioController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public LiraRatoRepositorio() {
+	public TipoUsuarioController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public LiraRato obterPorId(int id) {
+	public TipoUsuario obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		LiraRato lirarato = em.find(LiraRato.class, id);
+		TipoUsuario tipousuario = em.find(TipoUsuario.class, id);
 		em.getTransaction().commit();
-		return lirarato;
+		return tipousuario;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,20 +42,27 @@ public class LiraRatoRepositorio {
 		}
 	}
 	
-	public void salvarLiraRato(LiraRato u) {
-		em.getTransaction().begin();
-		LiraRato lirarato = new LiraRato();        
-		em.merge(u);
-		em.getTransaction().commit();
-		emf.close();
-		
-		
-	}
-	public void removerLiraRato(int id) {
+	public void salvarTipoUsuario(TipoUsuario u) {
 		try {
 		em.getTransaction().begin();
-		LiraRato lirarato = em.find(LiraRato.class, id);
-		em.remove(lirarato);
+		TipoUsuario tipousuario = new TipoUsuario();        
+		em.merge(u);
+		em.getTransaction().commit();
+		} finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
+		
+	}
+	public void removerTipoUsuario(int id) {
+		try {
+		em.getTransaction().begin();
+		TipoUsuario tipousuario = em.find(TipoUsuario.class, id);
+		em.remove(tipousuario);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -67,13 +73,13 @@ public class LiraRatoRepositorio {
 			}
 		}
 	}
-	public List<LiraRato> listarTodos(){
+	public List<TipoUsuario> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Quarteirao id");
-		List<LiraRato> lirasrato = consulta.getResultList();
+		Query consulta = em.createQuery("select id from TipoUsuario id");
+		List<TipoUsuario> tipousuarios = consulta.getResultList();
 		em.getTransaction().commit();
-		return lirasrato;
+		return tipousuarios;
 
 		}finally{
 			if(preparedStatement != null) {

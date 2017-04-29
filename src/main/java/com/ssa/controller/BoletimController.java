@@ -1,70 +1,52 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.DiarioBoletim;
 
-import com.ssa.Logradouro;
-
-public class LogradouroRepositorio {
+public class BoletimController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
-
 	
-	public LogradouroRepositorio() {
+	public BoletimController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Logradouro obterPorId(int id) {
-		try {
+	public DiarioBoletim obterPorId(int id) {
+	try {
 		em.getTransaction().begin();
-		Logradouro logradouro = em.find(Logradouro.class, id);
+		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
 		em.getTransaction().commit();
-		return logradouro;
+		return boletim;
 
-		}finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
+	}finally{
+		if(preparedStatement != null) {
+			emf.close();
 		}
+		if(preparedStatement != null) {
+			em.getTransaction().begin();
+		}
+	}
 	}
 	
-	public void salvarlogradouro(Logradouro u) {
+	public void salvarBoletimDiario(DiarioBoletim b) {
 		try {
 		em.getTransaction().begin();
-		Logradouro tipousuario = new Logradouro();        
-		em.merge(u);
+		DiarioBoletim usuario = new DiarioBoletim();        
+		em.merge(b);
 		em.getTransaction().commit();
-		} finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
-		}
 		
-	}
-	public void removerLogradouro(int id) {
-		try {
-		em.getTransaction().begin();
-		Logradouro tipousuario = em.find(Logradouro.class, id);
-		em.remove(tipousuario);
-		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
 				emf.close();
@@ -74,13 +56,12 @@ public class LogradouroRepositorio {
 			}
 		}
 	}
-	public List<Logradouro> listarTodos(){
-		try{
+	public void removerBoletim(int id) {
+		try {
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Logradouro id");
-		List<Logradouro> tipousuarios = consulta.getResultList();
+		DiarioBoletim boletim = em.find(DiarioBoletim.class, id);
+		em.remove(boletim);
 		em.getTransaction().commit();
-		return tipousuarios;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -90,7 +71,23 @@ public class LogradouroRepositorio {
 				em.getTransaction().begin();
 			}
 		}
-		
+	}
+	public List<DiarioBoletim> listarTodos(){
+		try {
+		em.getTransaction().begin();
+		Query consulta = em.createQuery("select id from DiarioBoletim id");
+		List<DiarioBoletim> boletins = consulta.getResultList();
+		em.getTransaction().commit();
+		return boletins;
+
+		}finally{
+			if(preparedStatement != null) {
+				emf.close();
+			}
+			if(preparedStatement != null) {
+				em.getTransaction().begin();
+			}
+		}
 	}
 	
 }

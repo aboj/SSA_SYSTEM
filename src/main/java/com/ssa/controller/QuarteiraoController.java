@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.Quarteirao;
 
-import com.ssa.BoletimSupervisor;
-
-public class BoletimSupervisorRepositorio {
+public class QuarteiraoController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public BoletimSupervisorRepositorio() {
+	public QuarteiraoController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public BoletimSupervisor obterPorId(int id) {
+	public Quarteirao obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		BoletimSupervisor boletimS = em.find(BoletimSupervisor.class, id);
+		Quarteirao quarteirao = em.find(Quarteirao.class, id);
 		em.getTransaction().commit();
-		return boletimS;
+		return quarteirao;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,11 +42,11 @@ public class BoletimSupervisorRepositorio {
 		}
 	}
 	
-	public void salvarBoletimSupervisor(BoletimSupervisor bs) {
+	public void salvarlogradouro(Quarteirao u) {
 		try {
 		em.getTransaction().begin();
-		BoletimSupervisor boletimS = new BoletimSupervisor();        
-		em.merge(bs);
+		Quarteirao tipousuario = new Quarteirao();        
+		em.merge(u);
 		em.getTransaction().commit();
 		} finally{
 			if(preparedStatement != null) {
@@ -59,11 +58,11 @@ public class BoletimSupervisorRepositorio {
 		}
 		
 	}
-	public void removerBoletimSupervisor(int id) {
+	public void removerQuarteirao(int id) {
 		try {
 		em.getTransaction().begin();
-		BoletimSupervisor boletimS = em.find(BoletimSupervisor.class, id);
-		em.remove(boletimS);
+		Quarteirao quarteirao = em.find(Quarteirao.class, id);
+		em.remove(quarteirao);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +73,13 @@ public class BoletimSupervisorRepositorio {
 			}
 		}
 	}
-	public List<BoletimSupervisor> listarTodos(){
+	public List<Quarteirao> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from BoletimSupervisor id");
-		List<BoletimSupervisor> boletinsS = consulta.getResultList();
+		Query consulta = em.createQuery("select id from Quarteirao id");
+		List<Quarteirao> quarteiroes = consulta.getResultList();
 		em.getTransaction().commit();
-		return boletinsS;
+		return quarteiroes;
 
 		}finally{
 			if(preparedStatement != null) {
