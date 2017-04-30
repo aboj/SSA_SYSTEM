@@ -7,6 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Size;
+
+import com.ssa.model.DiarioBoletim.LixoAcondicionamento;
 
 @Entity
 @Table(name="tb_logradouro")
@@ -25,12 +32,15 @@ public class Logradouro{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	
+	@NotNull
+	@Size(max = 60)
 	@Column
 	private String nomeLogradouro;
 	
-	@Column
-	private String tipoLogradouro;
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	TipoLogradouro TipoLogradouro;
 	
 	@ManyToOne 
 	@JoinColumn (name = "quarteirao_id")
@@ -52,13 +62,17 @@ public class Logradouro{
 	public void setNomeLogradouro(String nomeLogradouro) {
 		this.nomeLogradouro = nomeLogradouro;
 	}
-	public String getTipoLogradouro() {
-		return tipoLogradouro;
-	}
-	public void setTipoLogradouro(String tipoLogradouro) {
-		this.tipoLogradouro = tipoLogradouro;
-	}
 	
+	public enum TipoLogradouro {
+	    Rua("1"),
+	    Avenida("2"),
+		Travessa("3"),
+		Praca("4");
+	    private String valor;
+	    private TipoLogradouro(String valor) {
+	        this.valor = valor;
+	    }
+	}
 	
 	
 	

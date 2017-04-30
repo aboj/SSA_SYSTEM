@@ -19,20 +19,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Size;
 
 @Entity
 @Table(name="tb_area")
 @Access(AccessType.FIELD)
 public class Area implements Serializable{
 	
+	@NotNull
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idArea;
 	
-	@Column
 	@NotNull
+	@Size(max = 15)
+	@Column
 	private String nomeArea;
-	
+
+	@NotNull
+	@Size(max = 15)
 	@Column
 	private int qtdQuarteirao;
 	

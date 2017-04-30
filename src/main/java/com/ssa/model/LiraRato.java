@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.NotNull;
+
 import com.ssa.model.DiarioBoletim.TipoImovel;
 
 @Entity
@@ -26,60 +28,85 @@ public class LiraRato implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
     TipoImovel tipoImovel;
+	@NotNull
 	@Column
 	private boolean trabalhado;
+	@NotNull
 	@Column
 	private boolean sinaisAtivos;
+	@NotNull
 	@Column
 	private boolean ratanazas;
+	@NotNull
 	@Column
 	private boolean ratoDeTelhado;
+	@NotNull
 	@Column
 	private boolean camundongo;
+	@NotNull
 	@Column
 	private boolean indeterminado;
+	@NotNull
 	@Column
 	private boolean ralos_esgostos_danificados;
+	@NotNull
 	@Column
 	private boolean materialConstrucao;
+	@NotNull
 	@Column
 	private boolean entulho;
+	@NotNull
 	@Column
 	private boolean lixo_mal_acondicionado;
+	@NotNull
 	@Column
 	private boolean alimento_exposto;
+	@NotNull
 	@Column
 	private boolean quintal_sem_capinacao;
+	@NotNull
 	@Column
 	private boolean frestas_em_estruturas;
+	@NotNull
 	@Column
 	private boolean area_alagavel;
+	@NotNull
 	@Column
 	private boolean proximidade_canal;
+	@NotNull
 	@Column
 	private boolean drenagem_inadequada;
+	@NotNull
 	@Column
 	private boolean esgostamento_inadequado;
+	@NotNull
 	@Column
 	private boolean pontos_criticos_lixo;
+	@NotNull
 	@Column
 	private boolean pontos_confinamento;
+	@NotNull
 	@Column
 	private boolean terreno_baldio;
+	@NotNull
 	@Column
 	private boolean imoveis_abandonados;
+	@NotNull
 	@Column
 	private long parafinado;
+	@NotNull
 	@Column
 	private long po_de_contato;
+	@NotNull
 	@Column
 	private long granulado;
+	@NotNull
 	@Column
 	private long supervisor;
-	
 	
 	@ManyToOne
 	@JoinColumn (name = "imovelLRato_id")

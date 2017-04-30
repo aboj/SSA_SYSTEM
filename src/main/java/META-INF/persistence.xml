@@ -12,6 +12,8 @@
 	<class>com.ssa.model.LiraRato</class>
 	<class>com.ssa.model.DiarioBoletim</class>	
 	<class>com.ssa.model.BoletimSupervisor</class>	
+	<class>com.ssa.model.RegistroSemanal</class>	
+	
 	
 	
 		<properties>

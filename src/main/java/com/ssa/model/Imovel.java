@@ -16,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Size;
+
 
 @Entity
 @Table(name="tb_imovel")
@@ -26,17 +29,22 @@ public class Imovel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	
+	@NotNull
+	@Size(max = 15)
 	@Column
 	private int numero;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn (name = "logradouro_id")
 	private Logradouro logradouro;
 	
+	@NotNull
 	@OneToMany (mappedBy = "imovel", targetEntity = DiarioBoletim.class, fetch =FetchType.LAZY)
 	private List<DiarioBoletim> dboletim;
 	
+	@NotNull
 	@OneToMany (mappedBy = "imovel", targetEntity = LiraRato.class, fetch =FetchType.LAZY)
 	private List<LiraRato> lRato;
 	

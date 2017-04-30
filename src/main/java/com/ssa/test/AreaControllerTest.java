@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/*
 @RunWith(JUnitParamsRunner.class)
 public class AreaControllerTest {
 	
@@ -34,7 +35,7 @@ public class AreaControllerTest {
 		Query sql = em.createNativeQuery("SELECT nomeArea FROM tb_area WHERE idArea = :id");
 		String nome = (String) sql.getSingleResult();
 		
-	}*/
+	}
 	
 	@Test
 	public void deletarAreaSQL(Long id){
@@ -43,5 +44,5 @@ public class AreaControllerTest {
 		deleteSql.executeUpdate();
 		
 	}
-
-}
+	
+}*/

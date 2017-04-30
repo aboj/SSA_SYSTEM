@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.NotNull;
+import org.hibernate.validator.Size;
+
 @Entity
 @Table(name="tb_tipo_usuario")
 @Access(AccessType.FIELD)
@@ -25,6 +28,8 @@ public class TipoUsuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
+	@Size(max = 50)
 	@Column
 	private String descricao;
 	

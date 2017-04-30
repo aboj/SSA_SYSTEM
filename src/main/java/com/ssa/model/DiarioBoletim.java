@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.NotNull;
+
 import com.ssa.model.LiraRato.TipoImovel;
 
 import java.util.Date;
@@ -27,70 +29,109 @@ public class DiarioBoletim implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	
+	@NotNull 
 	@Column
 	private boolean quarteirao_concluido;
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	Situacao situacao;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	Motivo motivo;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
     TipoImovel tipoImovel;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	LixoTipo lixoTipo;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	LixoAcondicionamento lixoAcondicionamento;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	LixoDestino lixoDestino;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	CloroSolucao cloroSolucao;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	Ovitrampas ovitrampas;
+	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	AedesCriadouros aedesCriadouros;
+	
+	@NotNull
 	@Column
 	private int aedesPositivo;
+	@NotNull
 	@Column
 	private int aedesMecanico;
+	@NotNull
 	@Column
 	private int aedesBiologico;
+	@NotNull
 	@Column
 	private int aedesQuimico;
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	CulexCriadouros culexCriadouros;
+	@NotNull
 	@Column
 	private int culexPositivo;
+	@NotNull
 	@Column
 	private int culexMecanico;
+	@NotNull
 	@Column
 	private int culexBiologico;
+	@NotNull
 	@Column
 	private int culexQuimico;
+	@NotNull
 	@Column
 	private boolean quarteiraoConcluido;
+	@NotNull
 	@Column
 	private int ciclo;
+	@NotNull
 	@Column
 	private int numero_planilha;
+	@NotNull
 	@Column
 	private int periodo;
+	@NotNull
 	@Column
 	private Date data_visita;
+	@NotNull
 	@Column
 	private int BtiGNumDepositos;
+	@NotNull
 	@Column
 	private long BtiGQtde;
+	@NotNull
 	@Column
 	private int BtiGWDGNumDepositos;
+	@NotNull
 	@Column
 	private long BtiWDGQtde;
+	@NotNull
 	@Column
 	private int BsDNumDepositos;
+	@NotNull
 	@Column
 	private long BSGQtde;
+	@NotNull
 	@Column
 	private int HipocloritoQtde;
-	
 	
 	@ManyToOne
 	@JoinColumn (name = "imovelDBoletim_id")
