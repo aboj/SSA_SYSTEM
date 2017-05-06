@@ -1,13 +1,28 @@
-package com.ssa;
+package com.ssa.model;
 
 
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.validator.NotNull;
 
 @Entity
 @Table(name="tb_area")
+@Access(AccessType.FIELD)
 public class Area implements Serializable{
 	
 	@Id
@@ -15,6 +30,7 @@ public class Area implements Serializable{
 	private long idArea;
 	
 	@Column
+	@NotNull
 	private String nomeArea;
 	
 	@Column

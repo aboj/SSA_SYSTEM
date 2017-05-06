@@ -1,8 +1,10 @@
-package com.ssa;
+package com.ssa.model;
 
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tb_tipo_usuario")
+@Access(AccessType.FIELD)
+
 public class TipoUsuario implements Serializable{
 	
 	@Id

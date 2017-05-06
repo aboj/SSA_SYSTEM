@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.TipoUsuario;
 
-import com.ssa.Quarteirao;
-
-public class QuarteiraoRepositorio {
+public class TipoUsuarioController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public QuarteiraoRepositorio() {
+	public TipoUsuarioController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Quarteirao obterPorId(int id) {
+	public TipoUsuario obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		Quarteirao quarteirao = em.find(Quarteirao.class, id);
+		TipoUsuario tipousuario = em.find(TipoUsuario.class, id);
 		em.getTransaction().commit();
-		return quarteirao;
+		return tipousuario;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,10 +42,10 @@ public class QuarteiraoRepositorio {
 		}
 	}
 	
-	public void salvarlogradouro(Quarteirao u) {
+	public void salvarTipoUsuario(TipoUsuario u) {
 		try {
 		em.getTransaction().begin();
-		Quarteirao tipousuario = new Quarteirao();        
+		TipoUsuario tipousuario = new TipoUsuario();        
 		em.merge(u);
 		em.getTransaction().commit();
 		} finally{
@@ -59,11 +58,11 @@ public class QuarteiraoRepositorio {
 		}
 		
 	}
-	public void removerQuarteirao(int id) {
+	public void removerTipoUsuario(int id) {
 		try {
 		em.getTransaction().begin();
-		Quarteirao quarteirao = em.find(Quarteirao.class, id);
-		em.remove(quarteirao);
+		TipoUsuario tipousuario = em.find(TipoUsuario.class, id);
+		em.remove(tipousuario);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +73,13 @@ public class QuarteiraoRepositorio {
 			}
 		}
 	}
-	public List<Quarteirao> listarTodos(){
+	public List<TipoUsuario> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Quarteirao id");
-		List<Quarteirao> quarteiroes = consulta.getResultList();
+		Query consulta = em.createQuery("select id from TipoUsuario id");
+		List<TipoUsuario> tipousuarios = consulta.getResultList();
 		em.getTransaction().commit();
-		return quarteiroes;
+		return tipousuarios;
 
 		}finally{
 			if(preparedStatement != null) {

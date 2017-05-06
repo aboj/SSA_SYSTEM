@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.LiraRato;
 
-import com.ssa.Imovel;
-
-public class ImovelRepositorio {
+public class LiraRatoController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public ImovelRepositorio() {
+	public LiraRatoController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Imovel obterPorId(int id) {
+	public LiraRato obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		Imovel imovel = em.find(Imovel.class, id);
+		LiraRato lirarato = em.find(LiraRato.class, id);
 		em.getTransaction().commit();
-		return imovel;
+		return lirarato;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,27 +42,20 @@ public class ImovelRepositorio {
 		}
 	}
 	
-	public void salvarUsuario(Imovel i) {
-		try {
+	public void salvarLiraRato(LiraRato u) {
 		em.getTransaction().begin();
-		Imovel imovel = new Imovel();        
-		em.merge(i);
+		LiraRato lirarato = new LiraRato();        
+		em.merge(u);
 		em.getTransaction().commit();
-		} finally{
-			if(preparedStatement != null) {
-				emf.close();
-			}
-			if(preparedStatement != null) {
-				em.getTransaction().begin();
-			}
-		}
+		emf.close();
+		
 		
 	}
-	public void removerImovel(int id) {
+	public void removerLiraRato(int id) {
 		try {
 		em.getTransaction().begin();
-		Imovel imovel = em.find(Imovel.class, id);
-		em.remove(imovel);
+		LiraRato lirarato = em.find(LiraRato.class, id);
+		em.remove(lirarato);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +66,13 @@ public class ImovelRepositorio {
 			}
 		}
 	}
-	public List<Imovel> listarTodos(){
+	public List<LiraRato> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Imovel id");
-		List<Imovel> imoveis = consulta.getResultList();
+		Query consulta = em.createQuery("select id from Quarteirao id");
+		List<LiraRato> lirasrato = consulta.getResultList();
 		em.getTransaction().commit();
-		return imoveis;
+		return lirasrato;
 
 		}finally{
 			if(preparedStatement != null) {

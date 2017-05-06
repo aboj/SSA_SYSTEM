@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.Area;
 
-import com.ssa.LiraRato;
-
-public class LiraRatoRepositorio {
+public class AreaController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public LiraRatoRepositorio() {
+	public AreaController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public LiraRato obterPorId(int id) {
+	public Area obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		LiraRato lirarato = em.find(LiraRato.class, id);
+		Area area = em.find(Area.class, id);
 		em.getTransaction().commit();
-		return lirarato;
+		return area;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,11 +42,11 @@ public class LiraRatoRepositorio {
 		}
 	}
 	
-	public void salvarLiraRato(LiraRato u) {
+	public void salvarArea(Area a) {
 		try {
 		em.getTransaction().begin();
-		LiraRato lirarato = new LiraRato();        
-		em.merge(u);
+		Area are = new Area();        
+		em.merge(a);
 		em.getTransaction().commit();
 		} finally{
 			if(preparedStatement != null) {
@@ -59,10 +58,10 @@ public class LiraRatoRepositorio {
 		}
 		
 	}
-	public void removerLiraRato(int id) {
+	public void removerArea(int id) {
 		try {
 		em.getTransaction().begin();
-		LiraRato lirarato = em.find(LiraRato.class, id);
+		Area lirarato = em.find(Area.class, id);
 		em.remove(lirarato);
 		em.getTransaction().commit();
 		}finally{
@@ -74,13 +73,13 @@ public class LiraRatoRepositorio {
 			}
 		}
 	}
-	public List<LiraRato> listarTodos(){
+	public List<Area> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Quarteirao id");
-		List<LiraRato> lirasrato = consulta.getResultList();
+		Query consulta = em.createQuery("select id from Area id");
+		List<Area> areas = consulta.getResultList();
 		em.getTransaction().commit();
-		return lirasrato;
+		return areas;
 
 		}finally{
 			if(preparedStatement != null) {

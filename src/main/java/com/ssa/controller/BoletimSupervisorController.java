@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.BoletimSupervisor;
 
-import com.ssa.TipoUsuario;
-
-public class TipoUsuarioRepositorio {
+public class BoletimSupervisorController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public TipoUsuarioRepositorio() {
+	public BoletimSupervisorController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public TipoUsuario obterPorId(int id) {
+	public BoletimSupervisor obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		TipoUsuario tipousuario = em.find(TipoUsuario.class, id);
+		BoletimSupervisor boletimS = em.find(BoletimSupervisor.class, id);
 		em.getTransaction().commit();
-		return tipousuario;
+		return boletimS;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,11 +42,11 @@ public class TipoUsuarioRepositorio {
 		}
 	}
 	
-	public void salvarTipoUsuario(TipoUsuario u) {
+	public void salvarBoletimSupervisor(BoletimSupervisor bs) {
 		try {
 		em.getTransaction().begin();
-		TipoUsuario tipousuario = new TipoUsuario();        
-		em.merge(u);
+		BoletimSupervisor boletimS = new BoletimSupervisor();        
+		em.merge(bs);
 		em.getTransaction().commit();
 		} finally{
 			if(preparedStatement != null) {
@@ -59,11 +58,11 @@ public class TipoUsuarioRepositorio {
 		}
 		
 	}
-	public void removerTipoUsuario(int id) {
+	public void removerBoletimSupervisor(int id) {
 		try {
 		em.getTransaction().begin();
-		TipoUsuario tipousuario = em.find(TipoUsuario.class, id);
-		em.remove(tipousuario);
+		BoletimSupervisor boletimS = em.find(BoletimSupervisor.class, id);
+		em.remove(boletimS);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +73,13 @@ public class TipoUsuarioRepositorio {
 			}
 		}
 	}
-	public List<TipoUsuario> listarTodos(){
+	public List<BoletimSupervisor> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from TipoUsuario id");
-		List<TipoUsuario> tipousuarios = consulta.getResultList();
+		Query consulta = em.createQuery("select id from BoletimSupervisor id");
+		List<BoletimSupervisor> boletinsS = consulta.getResultList();
 		em.getTransaction().commit();
-		return tipousuarios;
+		return boletinsS;
 
 		}finally{
 			if(preparedStatement != null) {

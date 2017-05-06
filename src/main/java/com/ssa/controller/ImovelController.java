@@ -1,4 +1,4 @@
-package com.ssa.repositorio;
+package com.ssa.controller;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -9,29 +9,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.ssa.model.Imovel;
 
-import com.ssa.Logradouro;
-
-public class LogradouroRepositorio {
+public class ImovelController {
 
 	EntityManagerFactory emf;
 	EntityManager em;
 	PreparedStatement preparedStatement = null;
 
 	
-	public LogradouroRepositorio() {
+	public ImovelController() {
 		
 		emf = Persistence.createEntityManagerFactory("SSASystem");
 		em = emf.createEntityManager();
 		
 	}
 	
-	public Logradouro obterPorId(int id) {
+	public Imovel obterPorId(int id) {
 		try {
 		em.getTransaction().begin();
-		Logradouro logradouro = em.find(Logradouro.class, id);
+		Imovel imovel = em.find(Imovel.class, id);
 		em.getTransaction().commit();
-		return logradouro;
+		return imovel;
 
 		}finally{
 			if(preparedStatement != null) {
@@ -43,11 +42,11 @@ public class LogradouroRepositorio {
 		}
 	}
 	
-	public void salvarlogradouro(Logradouro u) {
+	public void salvarUsuario(Imovel i) {
 		try {
 		em.getTransaction().begin();
-		Logradouro tipousuario = new Logradouro();        
-		em.merge(u);
+		Imovel imovel = new Imovel();        
+		em.merge(i);
 		em.getTransaction().commit();
 		} finally{
 			if(preparedStatement != null) {
@@ -59,11 +58,11 @@ public class LogradouroRepositorio {
 		}
 		
 	}
-	public void removerLogradouro(int id) {
+	public void removerImovel(int id) {
 		try {
 		em.getTransaction().begin();
-		Logradouro tipousuario = em.find(Logradouro.class, id);
-		em.remove(tipousuario);
+		Imovel imovel = em.find(Imovel.class, id);
+		em.remove(imovel);
 		em.getTransaction().commit();
 		}finally{
 			if(preparedStatement != null) {
@@ -74,13 +73,13 @@ public class LogradouroRepositorio {
 			}
 		}
 	}
-	public List<Logradouro> listarTodos(){
+	public List<Imovel> listarTodos(){
 		try{
 		em.getTransaction().begin();
-		Query consulta = em.createQuery("select id from Logradouro id");
-		List<Logradouro> tipousuarios = consulta.getResultList();
+		Query consulta = em.createQuery("select id from Imovel id");
+		List<Imovel> imoveis = consulta.getResultList();
 		em.getTransaction().commit();
-		return tipousuarios;
+		return imoveis;
 
 		}finally{
 			if(preparedStatement != null) {
