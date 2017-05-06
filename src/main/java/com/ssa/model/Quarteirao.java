@@ -26,12 +26,14 @@ import org.hibernate.validator.Size;
 public class Quarteirao implements Serializable{
 	
 	@Id
+	@Column(name = "id_quarteirao")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idQuarteirao;
 	
+
 	@NotNull
 	@Size(max = 100)
-	@Column
+	@Column(name = "descricao_quarteirao")
 	private String descricaoQuarteirao;
 	
 	@ManyToOne

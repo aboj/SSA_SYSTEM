@@ -1,5 +1,6 @@
 package com.ssa.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.List;
@@ -10,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.junit.After;
@@ -21,9 +21,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.ssa.model.Area;
+import com.ssa.model.Quarteirao;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class AreaControllerTest{
+public class QuarteiraoControllerTest {
 	
 	private static EntityManagerFactory emf;
     private static Logger logger = Logger.getGlobal();
@@ -32,7 +33,7 @@ public class AreaControllerTest{
 	
 	 @BeforeClass
 	    public static void setUpClass() {
-	        //logger.setLevel(Level.INFO);
+	       	logger.setLevel(Level.INFO);
 	        logger.setLevel(Level.SEVERE);
 	        emf = Persistence.createEntityManagerFactory("SSASystem");
 	        DBUnitTest.inserirDados();
@@ -70,49 +71,29 @@ public class AreaControllerTest{
 	        }
 	    }
 	
-
 	@Test
-	public void listaAreaJPQL() {
-
-		String consultaSql = "SELECT c FROM Area c";
-		TypedQuery<Area> consultaArea = em.createQuery(consultaSql, Area.class);
+	public void listaQuarteiraoJPQL() {
+		logger.info("Executando t04: SELECT c FROM Quarteirao c");
+		String consultaSql = "SELECT c FROM Quarteirao c";
+		TypedQuery<Quarteirao> consultaQuarteirao = em.createQuery(consultaSql, Quarteirao.class);
 		
-		List<Area> areas = consultaArea.getResultList();
+		List<Quarteirao> quarteiroes = consultaQuarteirao.getResultList();
 		
-		for(Area area:areas){
+		/*for(Quarteirao quarteirao:quarteiroes){
 			
-			System.out.println(area.getNomeArea());
-		}
+			System.out.println(quarteirao.getDescricaoQuarteirao());
+		}*/
+		
+		assertEquals(3, quarteiroes.size());
 
 	}
 	
-	@Test
+	/*@Test
 	public void pegarAreaSQL(){
-		
-		Query sql = em.createNativeQuery("SELECT nomeArea FROM tb_area WHERE idArea = :id");
+		int i = 1;
+		Query sql = em.createNativeQuery("SELECT nomeArea FROM tb_area WHERE idArea = :i");
 		String nome = (String) sql.getSingleResult();
 		
-	}
-	
-	@Test
-	public void deletarAreaSQL(Long id){
-		
-		Query deleteSql = em.createNativeQuery("DELETE FROM Area a WHERE a.idArea = :id");
-		deleteSql.executeUpdate();
-		
-	}
-	
-
-	/*@Test
-	public void salvarArea(Area a) {
-		
-		em.getTransaction().begin();
-		Area are = new Area();        
-		em.merge(a);
-		em.getTransaction().commit();
-
 	}*/
-	
-
 
 }
