@@ -23,10 +23,11 @@ import javax.persistence.Table;
 public class Quarteirao implements Serializable{
 	
 	@Id
+	@Column(name = "id_quarteirao")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idQuarteirao;
 	
-	@Column
+	@Column(name = "descricao_quarteirao")
 	private String descricaoQuarteirao;
 	
 	@ManyToOne
